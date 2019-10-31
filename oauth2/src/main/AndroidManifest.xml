@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ebay.api.client.auth.oauth2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <activity
+            android:name=".ui.OAuthActivity"
+            android:exported="true"
+            android:launchMode="singleTask"/>
+
+        <activity
+            android:name=".ui.OAuthRedirectActivity"
+            android:exported="true"/>
+    </application>
+</manifest>

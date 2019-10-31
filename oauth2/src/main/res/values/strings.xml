@@ -1,0 +1,4 @@
+<resources>
+    <string name="oauth_ok">OK</string>
+    <string name="oauth_error">Error</string>
+</resources>

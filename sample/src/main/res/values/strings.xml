@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">auth</string>
+    <string name="sign_in">sign in</string>
+</resources>
