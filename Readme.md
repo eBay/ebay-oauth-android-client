@@ -20,6 +20,16 @@ Native apps performs authorization code grant flow in three steps
 
 This library helps perform step 1 on Android app.
 
+# Obtaining Library
+This library is distributed via maven central repository. To use this library, include the below as dependency in your project
+
+```
+dependencies {
+    compile 'com.ebay.auth:ebay-oauth-android-client:1.0.1'
+}
+```
+
+
 # Application Setup
 Before performing OAuth, the library should be initialized with details about your application from eBay developer portal. The library uses 
 - Client ID. For details see [Getting your OAuth credentials](https://developer.ebay.com/api-docs/static/oauth-credentials.html)
