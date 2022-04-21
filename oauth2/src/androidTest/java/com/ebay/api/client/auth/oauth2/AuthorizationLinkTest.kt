@@ -91,7 +91,7 @@ class AuthorizationLinkTest {
             hasData(Uri.parse("ebay.oauth2://authorize?client_id=clientId&redirect_uri=https%3A%2F%2Ftest.redirect.uri.com%2Fauthdeeplink&response_type=code&scope=scope&prompt=login"))
         )
 
-        val context = InstrumentationRegistry.getInstrumentation().context
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
         val authorizationLink = AuthorizationLink(
             context,
             ApiEnvironment.PRODUCTION,

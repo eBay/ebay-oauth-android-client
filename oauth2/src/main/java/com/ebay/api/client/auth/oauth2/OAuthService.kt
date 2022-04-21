@@ -17,7 +17,9 @@ package com.ebay.api.client.auth.oauth2
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
+import androidx.core.app.ComponentActivity
+import androidx.fragment.app.FragmentActivity
 import com.ebay.api.client.auth.oauth2.model.*
 import com.ebay.api.client.auth.oauth2.ui.ErrorDialogFragment
 import com.ebay.api.client.auth.oauth2.ui.OAuthActivity
@@ -26,7 +28,7 @@ import com.ebay.api.client.auth.oauth2.ui.OAuthActivity
  * Main class to perform eBay Oauth 2.0 for native apps
  */
 class OAuthService(
-    private val activity: AppCompatActivity,
+    private val activity: ComponentActivity,
     private val requestCode: Int = OAUTH_REQUEST_CODE
 ) {
 
@@ -125,14 +127,20 @@ class OAuthService(
 
 
     private fun showErrorDialog(message: String) {
-        var fragment = ErrorDialogFragment().apply {
-            arguments = Bundle().apply {
-                putString(ErrorDialogFragment.KEY_TITLE, activity?.getString(R.string.oauth_error))
-                putString(ErrorDialogFragment.KEY_MESSAGE, message)
+        when (activity) {
+            is FragmentActivity -> {
+                val fragment = ErrorDialogFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(ErrorDialogFragment.KEY_TITLE, activity?.getString(R.string.oauth_error))
+                        putString(ErrorDialogFragment.KEY_MESSAGE, message)
+                    }
+                }
+                fragment.show(activity.supportFragmentManager, ErrorDialogFragment.TAG)
+            }
+            else -> {
+                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
             }
         }
-
-        fragment.show(activity.supportFragmentManager, ErrorDialogFragment.TAG)
     }
 
     companion object {
