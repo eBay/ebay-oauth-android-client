@@ -15,6 +15,7 @@
 
 package com.ebay.api.client.auth.oauth2
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -128,27 +129,30 @@ class AuthorizationLink {
 
 
     private fun launchOauthChromeTabs(): Boolean {
-        val intent = CustomTabsIntent.Builder().build()
+        val cctIntent = CustomTabsIntent.Builder().build()
+        sanitizeIntent(cctIntent.intent)
         val packageName = customTabsHelper.getPackageNameToUse()
-        packageName.let {
-            intent.intent.setPackage(packageName)
-            intent.launchUrl(context, buildWebUri())
+        packageName?.let {
+            cctIntent.intent.setPackage(packageName)
+            cctIntent.launchUrl(context, buildWebUri())
             return true
         }
         return false
     }
 
     private fun launchOauthBrowser(): Boolean {
-        context.startActivity(Intent(Intent.ACTION_VIEW, buildWebUri()))
+        val intent = Intent(Intent.ACTION_VIEW, buildWebUri())
+        context.startActivity(sanitizeIntent(intent))
         return true
     }
 
+    private fun sanitizeIntent(intent: Intent): Intent =
+        intent.apply { if (context !is Activity) addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }
 
     private fun launchOauthNative(): Boolean {
         val intent = Intent(Intent.ACTION_VIEW, buildUserConsentLink(userConsentDeepLink))
-
         return if (deepLinkHelper.verifyEbayDeepLink(intent)) {
-            context.startActivity(intent)
+            context.startActivity(sanitizeIntent(intent))
             true
         } else
             false
