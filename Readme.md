@@ -33,7 +33,7 @@ dependencies {
 # Application Setup
 Before performing OAuth, the library should be initialized with details about your application from eBay developer portal. The library uses 
 - Client ID. For details see [Getting your OAuth credentials](https://developer.ebay.com/api-docs/static/oauth-credentials.html)
-- Redirect Uri. for details see [Getting your Redirect_Uri](https://developer.ebay.com/api-docs/static/oauth-redirect-uri.html)
+- Redirect Uri (RuName). for details see [Getting your Redirect_Uri](https://developer.ebay.com/api-docs/static/oauth-redirect-uri.html)
 - Url encoded list of scopes. for details see [Specifying OAuth scopes](https://developer.ebay.com/api-docs/static/oauth-scopes.html)
 
 Use these details in `ApiSessionConfiguration.initialize()` as shown below:
@@ -43,7 +43,7 @@ Use these details in `ApiSessionConfiguration.initialize()` as shown below:
                 apiEnvironment = ApiEnvironment.PRODUCTION,
                 apiConfiguration = ApiConfiguration(
                     <Client ID>,
-                    <Redirect Uri>,
+                    <Redirect Uri / RuName>,
                     <space separated scopes>
                 )
             )

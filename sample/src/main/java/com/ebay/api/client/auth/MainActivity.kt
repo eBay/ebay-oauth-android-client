@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 apiEnvironment = ApiEnvironment.PRODUCTION,
                 apiConfiguration = ApiConfiguration(
                     "<app id>",
-                    "<redirect uri>",
+                    "<redirect uri / RuName>",
                     "scope_1 " + "scope_2"
                 )
             )
