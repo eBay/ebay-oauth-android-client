@@ -28,11 +28,11 @@ class ApiSessionConfiguration private constructor() {
         private val instance: ApiSessionConfiguration = ApiSessionConfiguration()
 
         @Synchronized
-        fun getInstance(): ApiSessionConfiguration {
+        @JvmStatic fun getInstance(): ApiSessionConfiguration {
             return instance
         }
 
-        fun initialize(apiEnvironment: ApiEnvironment, apiConfiguration: ApiConfiguration) : ApiSessionConfiguration {
+        @JvmStatic fun initialize(apiEnvironment: ApiEnvironment, apiConfiguration: ApiConfiguration) : ApiSessionConfiguration {
             instance.apiEnvironment = apiEnvironment
             instance.apiConfiguration = apiConfiguration
             return instance
