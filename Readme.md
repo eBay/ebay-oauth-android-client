@@ -25,7 +25,7 @@ This library is distributed via maven central repository. To use this library, i
 
 ```
 dependencies {
-    compile 'com.ebay.auth:ebay-oauth-android-client:1.0.1'
+    implementation 'com.ebay.auth:ebay-oauth-android-client:1.0.1'
 }
 ```
 
@@ -53,7 +53,7 @@ To receive Authorization code, client app must override `OauthRedirectActivity` 
 
 ```
         <activity
-            android:name=".oauth2.ui.OAuthRedirectActivity"
+            android:name="com.ebay.api.client.auth.oauth2.ui.OAuthRedirectActivity"
             android:exported="true"
             tools:node="replace">
             <intent-filter>
@@ -133,7 +133,7 @@ To get the sample working, there are two steps:
 2. Open AndroidManifest.xml and edit the redirect_uri with registered redirect_uri from developer portal
 ```
         <activity
-            android:name=".oauth2.ui.OAuthRedirectActivity"
+            android:name="com.ebay.api.client.auth.oauth2.ui.OAuthRedirectActivity"
             android:exported="true"
             tools:node="replace">
             <intent-filter>
