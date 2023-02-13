@@ -25,7 +25,7 @@ This library is distributed via maven central repository. To use this library, i
 
 ```
 dependencies {
-    compile 'com.ebay.auth:ebay-oauth-android-client:1.0.1'
+    implementation 'com.ebay.auth:ebay-oauth-android-client:1.0.1'
 }
 ```
 
@@ -33,7 +33,7 @@ dependencies {
 # Application Setup
 Before performing OAuth, the library should be initialized with details about your application from eBay developer portal. The library uses 
 - Client ID. For details see [Getting your OAuth credentials](https://developer.ebay.com/api-docs/static/oauth-credentials.html)
-- Redirect Uri. for details see [Getting your Redirect_Uri](https://developer.ebay.com/api-docs/static/oauth-redirect-uri.html)
+- Redirect Uri (RuName). for details see [Getting your Redirect_Uri](https://developer.ebay.com/api-docs/static/oauth-redirect-uri.html)
 - Url encoded list of scopes. for details see [Specifying OAuth scopes](https://developer.ebay.com/api-docs/static/oauth-scopes.html)
 
 Use these details in `ApiSessionConfiguration.initialize()` as shown below:
@@ -43,7 +43,7 @@ Use these details in `ApiSessionConfiguration.initialize()` as shown below:
                 apiEnvironment = ApiEnvironment.PRODUCTION,
                 apiConfiguration = ApiConfiguration(
                     <Client ID>,
-                    <Redirect Uri>,
+                    <Redirect Uri / RuName>,
                     <space separated scopes>
                 )
             )
@@ -53,7 +53,7 @@ To receive Authorization code, client app must override `OauthRedirectActivity` 
 
 ```
         <activity
-            android:name=".oauth2.ui.OAuthRedirectActivity"
+            android:name="com.ebay.api.client.auth.oauth2.ui.OAuthRedirectActivity"
             android:exported="true"
             tools:node="replace">
             <intent-filter>
@@ -133,7 +133,7 @@ To get the sample working, there are two steps:
 2. Open AndroidManifest.xml and edit the redirect_uri with registered redirect_uri from developer portal
 ```
         <activity
-            android:name=".oauth2.ui.OAuthRedirectActivity"
+            android:name="com.ebay.api.client.auth.oauth2.ui.OAuthRedirectActivity"
             android:exported="true"
             tools:node="replace">
             <intent-filter>

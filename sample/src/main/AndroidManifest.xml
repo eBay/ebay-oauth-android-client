@@ -18,7 +18,7 @@
         </activity>
 
         <activity
-            android:name=".oauth2.ui.OAuthRedirectActivity"
+            android:name="com.ebay.api.client.auth.oauth2.ui.OAuthRedirectActivity"
             android:exported="true"
             tools:node="replace">
 <!--            <intent-filter>-->

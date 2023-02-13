@@ -111,14 +111,6 @@ class AuthorizationLink {
         if (grantType != GrantType.AUTHORIZATION_CODE)
             return unSupportedGrantType
 
-        // Only allow https redirect uri
-        if (!redirectUri.startsWith("https"))
-            return invalidRedirectUri
-
-        // verify redirect_uri deep link
-        if (!deepLinkHelper.verifyDeepLinkInCurrentApp(redirectUri))
-            return String.format(missingRedirectUriDeepLink, redirectUri)
-
         // verify environment when native deep link
         if (environment == ApiEnvironment.SANDBOX &&
             deepLinkHelper.verifyEbayDeepLink(Intent(Intent.ACTION_VIEW, Uri.parse(userConsentDeepLink))))
